@@ -1,3 +1,4 @@
+/* --- Базовая стилизация страницы --- */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -11,37 +12,10 @@ body {
     cursor: none;
 }
 
+/* --- Анимации для фона --- */
 @keyframes moveBackground {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 1000px 0;
-    }
-}
-
-.container {
-    width: 350px;
-    height: auto;
-    min-height: 400px;
-    overflow: hidden;
-    position: relative;
-    /* background: linear-gradient(135deg, #c9e742a8, #9467b6b6, #5b87bcad); */
-    background-image: url(../img/ChatGPT\ Image\ 1\ сент.\ 2025\ г.\,\ 08_39_47.png);
-    background-size: cover;
-    opacity: 0.8;
-    border-radius: 16px;
-    padding: 0.5rem 2rem 2rem;
-    color: #fff;
-    text-align: center;
-    border: 2px solid #0ff; 
-    box-shadow: 
-        0 0 10px #0ff,
-        0 0 20px #0ff,
-        0 0 40px #0ff,
-        0 0 80px #0ff;
-    border-radius: 20px;
-    transition: height 0.6s ease;
+    from { background-position: 0 0; }
+    to { background-position: 1000px 0; }
 }
 
 @keyframes gradientMove {
@@ -52,14 +26,36 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-.container.login-active {
-  height: 440px; /* высота login */
+/* --- Контейнеры --- */
+.container {
+    width: 350px;
+    min-height: 400px;
+    overflow: hidden;
+    position: relative;
+    background-image: url(../img/ChatGPT\ Image\ 1\ сент.\ 2025\ г.\,\ 08_39_47.png);
+    background-size: cover;
+    opacity: 0.8;
+    border-radius: 20px;
+    padding: 0.5rem 2rem 2rem;
+    color: #fff;
+    text-align: center;
+    border: 2px solid #0ff; 
+    box-shadow: 
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 40px #0ff,
+        0 0 80px #0ff;
+    transition: height 0.6s ease;
 }
 
-.container.register-active {
-  height: 450px; /* высота register */
-}
+/* Высота при активных формах */
+.container.login-active { height: 440px; }
+.container.register-active { height: 450px; }
 
+/* Переключение форм внутри контейнера */
+.container.active .form { transform: translateX(-50%); }
+
+/* --- Заголовки с неоновым эффектом --- */
 .neon-text {
     text-align: center;
     font-size: 2rem;
@@ -71,40 +67,39 @@ body {
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.7),
-                0 0 20px rgba(255, 0, 255, 0.6),
-                0 0 30px rgba(255, 255, 0, 0.4);
-    animation: glowTitle 3s infinite alternate;
+                 0 0 20px rgba(255, 0, 255, 0.6),
+                 0 0 30px rgba(255, 255, 0, 0.4);
+    animation: glowTitle 3s infinite alternate, neon-flicker 0.5s infinite alternate;
 }
 
 @keyframes glowTitle {
-  from {
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
-                 0 0 10px rgba(255, 0, 255, 0.3);
-  }
-  to {
-    text-shadow: 0 0 20px rgba(0, 255, 255, 1),
-                 0 0 40px rgba(255, 0, 255, 0.9),
-                 0 0 60px rgba(255, 255, 0, 0.8);
-  }
+    from {
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
+                     0 0 10px rgba(255, 0, 255, 0.3);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(0, 255, 255, 1),
+                     0 0 40px rgba(255, 0, 255, 0.9),
+                     0 0 60px rgba(255, 255, 0, 0.8);
+    }
 }
 
-/* Общий контейнер для форм */
+/* --- Формы --- */
 .form {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-/* Каждая форма */
 .form-box {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    transition: opacity 0.6s ease, transform 0.6s ease;
     opacity: 0;
     transform: scale(0.95);
     pointer-events: none; 
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .form-box.active {
@@ -113,11 +108,9 @@ body {
     pointer-events: all;
 }
 
-.form-box h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
+.form-box h2 { text-align: center; margin-bottom: 20px; }
 
+/* --- Поля ввода --- */
 input {
     width: 90%;
     margin: 10px 0;
@@ -132,10 +125,7 @@ input {
     transition: 0.3s ease;
 }
 
-input::placeholder {
-    color: #0ff;
-    text-shadow: none;
-}
+input::placeholder { color: #0ff; text-shadow: none; }
 
 input:focus {
     border-color: #0ff;
@@ -144,10 +134,7 @@ input:focus {
     box-shadow: 0 0 15px #0ff, 0 0 30px #0ff inset;
 }
 
-.neon-text {
-    animation: neon-flicker 0.5s infinite alternate;
-}
-
+/* --- Кнопки --- */
 button {
     width: 100%;
     padding: 15px 30px;
@@ -174,7 +161,7 @@ button:active {
     box-shadow: 0 0 10px #0ff, inset 0 0 15px #0ff;
 }
 
-/* ссылка на вход/регистацию */
+/* --- Ссылки и переключатели --- */
 .toggle {
     text-align: center;
     margin-top: 20px;
@@ -185,40 +172,30 @@ button:active {
     animation: neon-flicker 3s infinite alternate;
 }
 
-/* Переключение */
-.container.active .form {
-    transform: translateX(-50%);
+label, .forgot-link {
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+    animation: neon-flicker 2s infinite alternate;
 }
 
-/* кнопки гугл, яндекс и тд */
-.social-login {
+.forgot-link {
+    font-size: 14px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.forgot-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff;
+}
+
+.options {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    margin: 10px 0;
+    margin: 0;
 }
 
-.social-btn {
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    gap: 0.5rem;  
-    border: 1px solid #d1d5db; 
-    border-radius: 0.75rem;  
-    padding: 0.5rem 1rem; 
-    transition: background-color 0.2s ease;
-}
-
-.social-btn:hover {
-    background-color: #f3f4f655;
-}
-
-.social-btn img {
-    width: 200%;
-    height: 200%;
-}
-
+/* --- Чекбоксы --- */
 .checkbox-group {
     display: flex;
     align-items: center;
@@ -229,7 +206,6 @@ button:active {
 }
 
 .checkbox-group input[type="checkbox"] {
-    padding: 10px;
     appearance: none;
     width: 18px;
     height: 18px;
@@ -238,11 +214,13 @@ button:active {
     cursor: pointer;
     transition: 0.2s;
     position: relative;
+    padding: 10px;
 }
 
 .checkbox-group input[type="checkbox"]:checked {
-    border-color: #4a90e2;
-    background-color: #4a90e2;
+    border-color: #00f2ff;
+    background-color: #00f2ff;
+    box-shadow: 0 0 10px #00f2ff;
 }
 
 .checkbox-group input[type="checkbox"]:checked::after {
@@ -254,50 +232,39 @@ button:active {
     font-size: 14px;
 }
 
-.checkbox-group label {
-    user-select: none;
-    cursor: pointer;
+.checkbox-group label { user-select: none; cursor: pointer; }
+
+/* --- Социальные кнопки --- */
+.social-login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
 }
 
-.options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0px 0;
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.2s ease;
 }
 
-label,.forgot-link {
-  color: #0ff;
-  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
-  animation: neon-flicker 2s infinite alternate;
-}
+.social-btn:hover { background-color: #f3f4f655; }
 
+.social-btn img { width: 200%; height: 200%; }
+
+/* --- Анимации мигания --- */
 @keyframes neon-flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    opacity: 1;
-  }
-  20%, 24%, 55% {
-    opacity: 0.3;
-  }
+    0%,19%,21%,23%,25%,54%,56%,100% { opacity: 1; }
+    20%,24%,55% { opacity: 0.3; }
 }
 
-.forgot-link {
-    font-size: 14px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.forgot-link:hover {
-  color: #fff;
-  text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff;
-}
-
-.checkbox-group input[type="checkbox"]:checked {
-  border-color: #00f2ff;
-  background-color: #00f2ff;
-  box-shadow: 0 0 10px #00f2ff;
-}
-
-/* Контейнер для слоёв */
+/* --- Киберпанк фоновые элементы --- */
 .cyber-background {
     position: absolute;
     width: 97%;
@@ -306,7 +273,6 @@ label,.forgot-link {
     z-index: -1;
 }
 
-/* Неоновые линии */
 .line {
     position: absolute;
     width: 2px;
@@ -315,21 +281,21 @@ label,.forgot-link {
     animation: moveLine 5s linear infinite;
     opacity: 0.6;
 }
+
 @keyframes moveLine {
     from { transform: translateY(-100%); }
     to { transform: translateY(100%); }
 }
 
-/* Неоновые круги */
-.circle, .circle2 {
-    position: absolute;
-    border-radius: 50%;
-}
+/* --- Неоновые фигуры --- */
+.circle, .circle2 { position: absolute; border-radius: 50%; }
+
 .circle {
     background: rgba(255, 0, 255, 0.4);
     box-shadow: 0 0 25px #ff00ff, 0 0 50px #ff00ff;
     animation: pulse 6s ease-in-out infinite;
 }
+
 .circle2 {
     background: rgba(0, 255, 255, 0.3);
     box-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff;
@@ -340,24 +306,24 @@ label,.forgot-link {
     0%,100% { transform: scale(1); opacity: 0.6; }
     50% { transform: scale(1.2); opacity: 1; }
 }
+
 @keyframes pulse2 {
-    50% { transform: scale(1.2); opacity: 1; }
     0%,100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
 }
 
-/* Квадраты */
 .square {
     position: absolute;
     background: rgba(255, 255, 0, 0.3);
-    animation: rotateSquare 8s linear infinite;
     box-shadow: 0 0 15px #ffff00, 0 0 30px #ff0;
+    animation: rotateSquare 8s linear infinite;
 }
+
 @keyframes rotateSquare {
     from { transform: rotate(0deg) scale(1); }
     to { transform: rotate(360deg) scale(1.1); }
 }
 
-/* Треугольники */
 .triangle {
     position: absolute;
     width: 0;
@@ -368,12 +334,12 @@ label,.forgot-link {
     animation: float 6s ease-in-out infinite;
     filter: drop-shadow(0 0 15px #0f0);
 }
+
 @keyframes float {
     0%,100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
 }
 
-/* Шестиугольники */
 .hexagon {
     position: absolute;
     width: 100px;
@@ -383,6 +349,7 @@ label,.forgot-link {
     box-shadow: 0 0 15px #f0f, 0 0 30px #f0f;
     animation: hexPulse 7s infinite alternate;
 }
+
 .hexagon:before, .hexagon:after {
     content: "";
     position: absolute;
@@ -390,39 +357,29 @@ label,.forgot-link {
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
 }
-.hexagon:before {
-    bottom: 100%;
-    border-bottom: 27.5px solid rgba(255, 0, 100, 0.3);
-}
-.hexagon:after {
-    top: 100%;
-    border-top: 27.5px solid rgba(255, 0, 100, 0.3);
-}
+
+.hexagon:before { bottom: 100%; border-bottom: 27.5px solid rgba(255, 0, 100, 0.3); }
+.hexagon:after { top: 100%; border-top: 27.5px solid rgba(255, 0, 100, 0.3); }
+
 @keyframes hexPulse {
     0% { transform: scale(1) rotate(0deg); opacity: 0.6; }
     100% { transform: scale(1.2) rotate(360deg); opacity: 1; }
 }
 
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.3; }
-    50% { transform: scale(1.5); opacity: 0.7; }
-}
-
-/* Сам курсор (точка или неоновый круг) */
+/* --- Курсор и частицы --- */
 .cyberpunk-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 30px;
-  background: #0ff;
-  border-radius: 50%;
-  pointer-events: none;
-  mix-blend-mode: difference;
-  box-shadow: 0 0 15px #0ff, 0 0 30px #ff00ff;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s ease-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background: #0ff;
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    box-shadow: 0 0 15px #0ff, 0 0 30px #ff00ff;
+    transform: translate(-50%, -50%);
+    transition: transform 0.05s ease-out;
 }
 
 .cursor {
@@ -439,7 +396,6 @@ label,.forgot-link {
     z-index: 9999;
 }
 
-/* частицы (след за курсором) */
 .trail {
     position: fixed;
     width: 12px;
@@ -455,11 +411,11 @@ label,.forgot-link {
 
 @keyframes fadeOut {
     0% {
-    opacity: 1;
-    transform: scale(1) translate(-50%, -50%);
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
     }
     100% {
-    opacity: 0;
-    transform: scale(0.3) translate(-50%, -50%);
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%);
     }
 }
