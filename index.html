@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="img/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Auth</title>
+</head>
+<body>
+  <div class="container" id="container">
+    <div class="form">
+
+      <!-- Login -->
+      <div class="form-box active" id="login-form">
+        <h2 class="neon-text">Login</h2>
+
+        <form>
+          <input type="text" placeholder="Username" required>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+
+          <!-- Чекбокс и ссылка -->
+          <div class="options">
+            <div class="checkbox-group">
+              <input type="checkbox" id="remember">
+              <label for="remember">Remember me</label>
+            </div>
+            <a href="#" class="forgot-link" style="margin-bottom: 10px;">Forgot password?</a>
+          </div>
+          
+          <button type="submit">Login</button>
+        </form>
+        
+        <div class="toggle" id="show-register">Don’t have an account? Register</div>
+      </div>
+
+      <!-- Register -->
+      <div class="form-box" id="register-form">
+        <h2 class="neon-text">Register</h2>
+        <div class="social-login">
+            <!-- Google --> 
+            <button class="social-btn">
+                <img src="img/google.png" alt="Google">
+            </button>
+            <!-- Yandex -->
+            <button class="social-btn">
+                <img src="img/yandex.png" alt="Yandex">
+            </button>
+            <!-- GitHub -->
+            <button class="social-btn">
+                <img src="/img/github.png" alt="GitHub">
+            </button>
+            <!-- VK -->
+            <button class="social-btn">
+                <img src="img/vk.png" alt="VK">
+            </button>
+            <!-- GitHub -->
+            <button class="social-btn">
+                <img src="./img/in.png" alt="LinkedIn">
+            </button>
+            <!-- VK -->
+            <button class="social-btn">
+                <img src="img/tg.png" alt="tg">
+            </button>
+            
+        </div>
+                
+        <form action="">
+          <input type="text" placeholder="Username" required>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit" style="margin-top: 10px;">Register</button>
+        </form>
+
+        <div class="toggle" id="show-login">Already have an account? Login</div>
+      </div>
+    </div>
+  </div>
+  <div class="cyber-background" id="bg">
+    <!-- линии -->
+    <div class="line" style="left:10%"></div>
+    <div class="line" style="left:30%"></div>
+    <div class="line" style="left:50%"></div>
+    <div class="line" style="left:70%"></div>
+    <div class="line" style="left:90%"></div>
+
+    <!-- круги -->
+    <div class="circle" style="width:200px; height:200px; top:10%; left:15%"></div>
+    <div class="circle" style="width:300px; height:300px; top:50%; left:70%"></div>
+    
+    <div class="circle2" style="width:200px; height:200px; top:15%; left:70%"></div>
+    <div class="circle2" style="width:300px; height:300px; top:50%; left:10%"></div>
+
+    <!-- квадраты -->
+    <div class="square" style="width:120px; height:120px; top:5%; left:40%"></div>
+    <div class="square" style="width:80px; height:80px; top:65%; left:80%"></div>
+
+    <!-- треугольники -->
+    <div class="triangle" style="top:5%; left:88%"></div>
+    <div class="triangle" style="top:75%; left:5%"></div>
+
+    <!-- шестиугольники -->
+    <div class="hexagon" style="top:20%; left:60%"></div>
+    <div class="hexagon" style="top:80%; left:45%"></div>
+</div>
+
+  <div class="cyberpunk-cursor" id="cursor"></div>
+  <div class="cursor" id="cursor"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
